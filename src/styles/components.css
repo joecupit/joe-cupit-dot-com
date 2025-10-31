@@ -1,0 +1,141 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: var(--fs-big);
+  font-weight: 900;
+
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+
+  & a {
+    line-height: 1;
+  }
+
+  & button {
+    display: flex;
+
+    & svg {
+      width: 1.75ch;
+      height: 1.75ch;
+    }
+  }
+
+  & .theme-toggle svg {
+    width: 1.125ch;
+    height: 1.125ch;
+  }
+}
+
+.dark-mode-icon {
+  display: none;
+}
+body.dark {
+  .light-mode-icon {
+    display: none;
+  }
+  .dark-mode-icon {
+    display: initial;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding-inline: 1ch;
+
+  & .footer-icons {
+    display: flex;
+    align-items: center;
+    gap: 2ch;
+  }
+}
+
+.icon-link {
+  --_hover-colour: var(--clr-primary);
+  width: 3.5ch;
+  height: 3.5ch;
+
+  transition-property: color scale;
+  transition-duration: 200ms;
+
+  & svg {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.icon-link:hover {
+  color: var(--_hover-colour);
+  scale: 1.25;
+}
+
+.title {
+  font-size: var(--fs-big);
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: var(--fs-medium);
+  font-weight: 700;
+}
+
+a.block-link {
+  color: var(--clr-white);
+  background: var(--clr-primary);
+  font-weight: 700;
+
+  padding-block: 0.0125lh;
+  padding-inline: 0.25ch;
+  margin-inline: -0.25ch;
+
+  transition-property: color background-color border-color;
+  transition-duration: 200ms;
+
+  border: 2px solid transparent;
+
+  &:hover {
+    color: var(--clr-text);
+    background: none;
+    border-color: var(--clr-text);
+  }
+}
+a.normal-link {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-inline: 0.75ch;
+  padding-block: 0.125lh 0.175lh;
+
+  font-size: var(--fs-medium);
+  font-weight: 600;
+  text-transform: lowercase;
+  color: var(--clr-white);
+  background: var(--clr-primary-dark);
+
+  border-inline-start: 1ch solid var(--clr-primary);
+
+  & > span {
+    display: flex;
+    gap: 0.125ch;
+    align-items: baseline;
+  }
+
+  & ::selection {
+    color: var(--clr-white);
+    background: var(--clr-primary);
+  }
+}

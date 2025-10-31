@@ -1,0 +1,19 @@
+---
+import DarkModeIcon from "../icons/DarkModeIcon.astro";
+import LightModeIcon from "../icons/LightModeIcon.astro";
+import MenuIcon from "../icons/MenuIcon.astro";
+---
+
+<header class="navbar">
+  <a href="/">JC</a>
+
+  <div style="display: flex; align-items: center; gap: 0.5ch">
+    <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">
+      <DarkModeIcon />
+      <LightModeIcon />
+    </button>
+    <button>
+      <MenuIcon />
+    </button>
+  </div>
+</header>

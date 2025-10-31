@@ -1,16 +1,18 @@
 ---
+import "../styles/index.css";
+
+import Layout from "../layouts/Layout.astro";
+import AdaptiveText from "../components/AdaptiveText.astro";
+import Footer from "../components/Footer.astro";
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="home">
+	<h1 class="title">
+		<AdaptiveText text="Welcome!" />
+	</h1>
+
+	<p>I'm <a class="block-link" href="/about">Joe Cupit,</a> machine learning PhD student and creator of <a class="block-link" target="_blank" href="https://wainroutes.co.uk">Wainroutes,</a> the 'walkers guide to the Wainwrights'.</p>
+	<p>Find out <a class="block-link" href="/about">about me</a> or read more about my <a class="block-link" href="/research">research</a> and <a class="block-link" href="/web">web development</a> work.</p>
+	<Footer />
+</Layout>

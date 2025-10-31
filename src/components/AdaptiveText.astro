@@ -1,0 +1,32 @@
+---
+const { text } = Astro.props;
+---
+
+{text.split("").map((char: string) =>
+  <span class="adaptive-letter" style="font-weight: 700">{char}</span>
+)}
+
+<script>
+  const adaptiveLetters = [...document.getElementsByClassName("adaptive-letter")] as HTMLElement[];
+
+  document.addEventListener("mousemove", e => {
+    adaptiveLetters.forEach(element => {
+      // const fontWeight = Math.max(
+      //   Math.min(
+      //     900 - Math.abs((element.offsetLeft + element.offsetWidth / 2) - e.clientX) * 5,
+      //     900 - Math.abs((element.offsetTop + element.offsetHeight / 2) - e.clientY) * 2
+      //   ),
+      //   400
+      // );
+      const fontWeight = Math.max(
+        Math.max(
+          Math.abs((element.offsetLeft + element.offsetWidth / 2) - e.clientX) * 10,
+          Math.abs((element.offsetTop + element.offsetHeight / 2) - e.clientY) * 5
+        ),
+        300
+      );
+
+      element.style.fontWeight = String(fontWeight);
+    });
+  })
+</script>

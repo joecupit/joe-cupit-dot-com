@@ -1,0 +1,105 @@
+:root {
+  --clr-white: #fbfbfc;
+  --clr-primary: #34558a;
+  --clr-primary-dark: #060a11;
+
+  --clr-text: var(--clr-primary-dark);
+  --clr-bg: var(--clr-white);
+
+  --fs-body: 1rem;
+  --fs-medium: 1.625rem;
+  --fs-big: 3rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.dark {
+  --clr-text: var(--clr-white);
+  --clr-bg: var(--clr-primary-dark);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* justify-items: center;
+  align-content: center; */
+
+  min-height: 100dvh;
+
+  color: var(--clr-text);
+  background: var(--clr-bg);
+
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: var(--fs-body);
+  line-height: 1.75;
+}
+
+.page {
+  --_inline-padding: 1.5rem;
+
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 1.25lh;
+
+  margin-inline: auto;
+  margin-block: auto;
+
+  padding-block: 3rem 6rem;
+  padding-inline: var(--_inline-padding);
+
+  width: min(78ch + 2 * var(--_inline-padding), 100%);
+}
+
+main {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 1.25lh;
+}
+
+p {
+  max-width: 74ch;
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: inherit;
+  line-height: 1;
+}
+
+a {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+hr {
+  border: none;
+  border-block-start: 4px solid currentColor;
+  margin-block: 0.75lh 0;
+}
+
+::selection {
+  color: var(--clr-bg);
+  background: var(--clr-text);
+}
