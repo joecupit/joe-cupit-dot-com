@@ -91,7 +91,7 @@ body.dark {
 
 .block-link {
   color: var(--clr-white);
-  background: var(--clr-text);
+  background: var(--clr-primary);
   font-weight: 700;
   width: fit-content;
 
@@ -141,26 +141,20 @@ body.dark {
   align-items: center;
   justify-content: space-between;
 
-  padding-inline: 0.75ch;
-  padding-block: 0.125lh 0.175lh;
+  padding-inline: 1ch;
+  padding-block: 0.25lh;
 
   font-size: var(--fs-medium);
   font-weight: 700;
   text-transform: lowercase;
-  color: var(--clr-white);
-  background: var(--clr-primary-dark);
+  /* color: var(--clr-white); */
+  /* background: var(--clr-primary); */
+  border: 4px solid var(--clr-text);
 
   border-inline-start: 1ch solid var(--clr-primary);
 
-  & > span {
-    display: flex;
-    gap: 0.125ch;
-    align-items: baseline;
-  }
-
-  & ::selection {
-    color: var(--clr-white);
-    background: var(--clr-primary);
+  & h1::before {
+    content: "~";
   }
 }
 

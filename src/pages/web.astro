@@ -4,18 +4,16 @@ import "../styles/web.css";
 import Layout from "../layouts/Layout.astro";
 import Project from "../components/Project.astro";
 
-import WainroutesImage from "../images/wainroutes-2.png";
-import TheJaysImage from "../images/the-jays-1.png";
-import VocalyseImage from "../images/vocalyse-1.png";
+import WainroutesImage from "../assets/images/wainroutes-2.png";
+import TheJaysImage from "../assets/images/the-jays-1.png";
+import VocalyseImage from "../assets/images/vocalyse-1.png";
 ---
 
 <Layout title="web projects">
 	<div class="title-bar">
-		<span>
-			: <h1>Web projects</h1>
-		</span>
+		<h1>Web projects</h1>
 	</div>
-	
+
 	<div class="projects">
 		<Project title="Wainroutes" slug="wainroutes" image={WainroutesImage} tall={true} />
 		<Project title="Vocalyse Ltd" slug="vocalyse" image={VocalyseImage} />
