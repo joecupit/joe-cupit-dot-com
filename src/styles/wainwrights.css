@@ -1,0 +1,39 @@
+.progress {
+  --_rotation: 0deg;
+
+  position: relative;
+  width: 250px;
+  height: 250px;
+
+  border-radius: 999rem;
+
+  background: conic-gradient(
+    var(--clr-primary) 0deg,
+    var(--clr-primary) var(--_rotation),
+    #0001 var(--_rotation)
+  );
+}
+.inner-progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  width: 70%;
+  height: 70%;
+
+  border-radius: inherit;
+  background: var(--clr-white);
+
+  font-size: var(--fs-title);
+  font-weight: 900;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block-end: 0.125lh;
+
+  & span {
+    font-size: var(--fs-medium);
+  }
+}

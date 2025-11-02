@@ -3,7 +3,7 @@
   --clr-primary: #34558a;
   --clr-primary-dark: #121a27;
 
-  --clr-text: var(--clr-primary-dark);
+  --clr-text: #121a27;
   --clr-bg: var(--clr-white);
 
   --fs-body: 1rem;
@@ -77,7 +77,6 @@ main {
 
 p {
   max-width: 74ch;
-  text-wrap: pretty;
 }
 
 img {
@@ -124,6 +123,6 @@ body.dark hr {
 }
 
 ::selection {
-  color: var(--clr-bg);
-  background: var(--clr-text);
+  color: var(--clr-white);
+  background: var(--clr-primary);
 }

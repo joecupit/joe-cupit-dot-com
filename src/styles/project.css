@@ -29,7 +29,11 @@
 .project-image-section {
   display: grid;
   gap: 1ch;
-  grid-template-columns: 2fr 0.65fr;
+  grid-template-columns: 2fr 0.67fr;
+
+  & img:nth-child(2) {
+    border-radius: 0.75rem;
+  }
 }
 
 .project-row {
