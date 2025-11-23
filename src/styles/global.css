@@ -38,7 +38,7 @@ body {
   /* justify-items: center;
   align-content: center; */
 
-  min-height: 100dvh;
+  min-height: 100lvh;
 
   color: var(--clr-text);
   background: var(--clr-bg);
@@ -57,22 +57,15 @@ body {
   --_inline-padding: 1.5rem;
 
   display: grid;
-  grid-auto-rows: min-content;
   gap: 1.25lh;
 
   margin-inline: auto;
   margin-block: auto;
 
-  padding-block: 3rem 4rem;
+  /* padding-block: 3rem 4rem; */
   padding-inline: var(--_inline-padding);
 
   width: min(var(--_max-width) + 2 * var(--_inline-padding), 100%);
-}
-
-main {
-  display: grid;
-  grid-auto-rows: min-content;
-  gap: 1lh;
 }
 
 p {

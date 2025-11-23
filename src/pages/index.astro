@@ -1,44 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import AdaptiveText from "../components/AdaptiveText.astro";
-import Footer from "../components/Footer.astro";
-
-import GitHubIcon from "../assets/icons/GitHubIcon.astro";
-import LinkedInIcon from "../assets/icons/LinkedInIcon.astro";
-import WainroutesIcon from "../assets/icons/WainroutesIcon.astro";
+import Header from "./components/Header.astro";
+import Projects from "./components/Projects.astro";
+import About from "./components/About.astro";
+import Research from "./components/Research.astro";
+import Contact from "./components/Contact.astro";
 ---
 
 <Layout
 	title="home"
 	maxWidth="74ch"
 >
-	<div class="index-header">
-		<div>
-			<h1 class="title">
-				<!-- <AdaptiveText text="Welcome!" /> -->
-				Joe Cupit
-			</h1>
-			<p>PhD Researcher & Python Developer</p>
-		</div>
+	<Header />
+	<Projects />
+	<About />
+	<Research />
+	<Contact />
 
-		<div class="index-header-icons">
-      <GitHubIcon />
-      <LinkedInIcon />
-      <WainroutesIcon />
-		</div>
-	</div>
-
-	<p>I'm a machine learning PhD student at the <a class="block-link" href="https://www.manchester.ac.uk/" target="_blank">University of Manchester</a> working on predictive maintenance and OEE in the chemical industry.</p>
-
-	
-	<p>I also love climbing mountains and created <a class="block-link" href="/project/wainroutes">Wainroutes</a> to share my progress ticking off all the <a class="block-link" href="/wainwrights">214 Wainwrights.</a></p>
 	<!-- <p>Find out <a class="block-link" href="/about">about me</a> or read more about my <a class="block-link" href="/research">research</a> and <a class="block-link" href="/web">web development</a> work.</p> -->
 	<!-- <Footer /> -->
 
-	<div class="index-footer">
+	<!-- <div class="index-footer">
 		<a href="/about">About me</a>
 		<a href="/web">Web projects</a>
 		<a href="/research">My research</a>
 		<a href="/about">More</a>
-	</div>
+	</div> -->
 </Layout>

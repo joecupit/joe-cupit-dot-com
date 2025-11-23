@@ -1,0 +1,51 @@
+---
+import GitHubIcon from "../../assets/icons/GitHubIcon.astro";
+import LinkedInIcon from "../../assets/icons/LinkedInIcon.astro";
+import WainroutesIcon from "../../assets/icons/WainroutesIcon.astro";
+
+import DownCaretIcon from "../../assets/icons/DownCaretIcon.astro";
+---
+
+<section class="index-header">
+  <div class="index-header-top">
+    <div>
+      <h1 class="title">
+        <!-- <AdaptiveText text="Welcome!" /> -->
+        Joe Cupit
+      </h1>
+      <p>PhD Researcher & Python Developer</p>
+    </div>
+    <div class="index-header-icons">
+      <GitHubIcon />
+      <LinkedInIcon />
+      <WainroutesIcon />
+    </div>
+  </div>
+
+
+	<p>I'm a machine learning PhD student at the <a class="block-link" href="/research">University of Manchester</a> working on predictive maintenance and OEE in the chemical industry.</p>
+	<p>I also love climbing mountains and created <a class="block-link" href="/project/wainroutes">Wainroutes</a> to share my progress ticking off all the <a class="block-link" href="/wainwrights">214 Wainwrights.</a></p>
+
+  <button
+    id="read-more-button"
+    class="index-read-more"
+    onclick="document.getElementById('next-one').scrollIntoView({behavior: 'smooth'})"
+  >
+    read more
+    <DownCaretIcon />
+  </button>
+  <script>
+    const scrollButton = document.getElementById("read-more-button");
+    
+    const checkScroll = () => {
+      if (window.scrollY > 200) {
+        scrollButton?.classList.add("hide");
+      }
+      else {
+        scrollButton?.classList.remove("hide");
+      }
+    }
+
+    window.addEventListener("scroll", checkScroll);
+  </script>
+</section>
