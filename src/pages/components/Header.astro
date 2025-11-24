@@ -6,7 +6,7 @@ import WainroutesIcon from "../../assets/icons/WainroutesIcon.astro";
 import DownCaretIcon from "../../assets/icons/DownCaretIcon.astro";
 ---
 
-<section class="index-header">
+<section class="page-section index-header" id="hero">
   <div class="index-header-top">
     <div>
       <h1 class="title">
@@ -29,7 +29,7 @@ import DownCaretIcon from "../../assets/icons/DownCaretIcon.astro";
   <button
     id="read-more-button"
     class="index-read-more"
-    onclick="document.getElementById('next-one').scrollIntoView({behavior: 'smooth'})"
+    onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})"
   >
     read more
     <DownCaretIcon />
@@ -38,7 +38,7 @@ import DownCaretIcon from "../../assets/icons/DownCaretIcon.astro";
     const scrollButton = document.getElementById("read-more-button");
     
     const checkScroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 100) {
         scrollButton?.classList.add("hide");
       }
       else {
@@ -47,5 +47,6 @@ import DownCaretIcon from "../../assets/icons/DownCaretIcon.astro";
     }
 
     window.addEventListener("scroll", checkScroll);
+    checkScroll()
   </script>
 </section>

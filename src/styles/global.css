@@ -52,17 +52,19 @@ body {
   line-height: 1.75;
 }
 
+main {
+  display: grid;
+  gap: 5rem;
+}
+
 .page {
   --_max-width: 74ch;
   --_inline-padding: 1.5rem;
 
-  display: grid;
-  gap: 1.25lh;
-
   margin-inline: auto;
   margin-block: auto;
 
-  /* padding-block: 3rem 4rem; */
+  padding-block: 3rem 4rem;
   padding-inline: var(--_inline-padding);
 
   width: min(var(--_max-width) + 2 * var(--_inline-padding), 100%);

@@ -1,0 +1,20 @@
+<nav class="navigation">
+  <script>
+    const scrollToSection = (name: string) => {
+      document.getElementById(name)?.scrollIntoView();
+    }
+  </script>
+
+  <ul>
+    <li>
+      <button onclick="window.scrollTo({top: 0, left: 0, behavior: 'smooth'})">Home</button>
+    </li>
+    {[["Projects", "projects"], ["About me", "about"], ["Research", "research"], ["Contact", "contact"]].map((section) => {
+      return (
+        <li>
+          <button onclick={`document.getElementById('${section[1]}')?.scrollIntoView({behavior: 'smooth'})`}>{section[0]}</button>
+        </li>
+      )
+    })}
+  </ul>
+</nav>

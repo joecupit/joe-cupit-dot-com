@@ -121,8 +121,8 @@
   transition-duration: 200ms;
 
   & svg {
-    width: 2.5ch;
-    height: 2.5ch;
+    width: 2.125ch;
+    height: 2.125ch;
     transition: rotate 200ms;
   }
 

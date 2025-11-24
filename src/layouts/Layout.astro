@@ -5,7 +5,7 @@ import "../styles/components.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
-const { title, maxWidth } = Astro.props;
+const { type, title, maxWidth } = Astro.props;
 ---
 
 <html lang="en">
@@ -24,7 +24,7 @@ const { title, maxWidth } = Astro.props;
 	</head>
 	<body>
     <Navbar />
-    <main class="page" style={maxWidth ? `--_max-width: ${maxWidth};` : ""}>
+    <main class={type !== "variable" ? "page" : ""} style={maxWidth ? `--_max-width: ${maxWidth};` : ""}>
       <slot />
     </main>
     <Footer />
