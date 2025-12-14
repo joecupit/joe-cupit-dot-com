@@ -1,0 +1,110 @@
+---
+const {
+    text,
+    typo,
+    errorClass = "typo",
+} = Astro.props;
+---
+
+<span class="animated-typo">{text}</span>
+
+<script is:inline define:vars={{text, typo, errorClass}}>
+    const el = document.currentScript.previousElementSibling;
+    if (!el) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    let animatingId = null;
+    let isAnimating = false;
+
+    const textAnimation = (target, normalText, alternateText) => {
+        if (!target) return;
+
+        let time = 0;
+        const step = (fn, delay) => {
+            time += delay;
+            setTimeout(fn, time);
+        };
+
+        const jitter = (base, around = 10) => {
+            const offset = Math.floor(Math.random() * (around * 2 + 1)) - around;
+            return base + offset;
+        };
+
+        const typeText = (str, speed) => {
+            for (let i = 1; i <= str.length; i++) {
+            step(() => (target.innerText = str.slice(0, i)), jitter(speed, 10));
+            }
+        };
+
+        const deleteText = (str, speed) => {
+            for (let i = str.length; i >= 0; i--) {
+            step(() => (target.innerText = str.slice(0, i)), jitter(speed, 10));
+            }
+        };
+
+        // delete original
+        deleteText(normalText, 120);
+        step(() => {}, 250);
+
+        // type new
+        typeText(alternateText, 160);
+        step(() => target.classList.add(errorClass), -250);
+
+        // pause
+        step(() => {}, 1500);
+
+        // delete new
+        deleteText(alternateText, 130);
+        step(() => target.classList.remove(errorClass), 250);
+
+        // type original
+        typeText(normalText, 120);
+
+        step(() => isAnimating = false, 500);
+    }
+
+    const doAnimation = () => {
+        if (!isAnimating && !prefersReducedMotion && el) {
+            if (animatingId) {
+                clearTimeout(animatingId);
+            }
+
+            isAnimating = true;
+            textAnimation(el, text, typo);
+
+            animatingId = setTimeout(() => {
+                doAnimation();
+            }, 30000);
+        }
+    }
+
+    animatingId = setTimeout(doAnimation, 1000);
+    el.addEventListener("mouseover", doAnimation);
+</script>
+
+<style>
+    .animated-typo {
+        position: relative;
+        cursor: default;
+    }
+    .animated-typo::after {
+        --_height: 0.154lh;
+
+        content: "";
+        width: 100%;
+        height: var(--_height);
+        background-image: url("/assets/zig.svg");
+        position: absolute;
+        top: calc(100% - var(--_height) * 1.25);
+        left: 0;
+        z-index: -1;
+
+        opacity: 0;
+        transition: opacity 50ms;
+    }
+    .animated-typo.typo::after {
+        opacity: 1;
+    }
+</style>

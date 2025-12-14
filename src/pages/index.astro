@@ -4,14 +4,16 @@ import Layout from "../layouts/Layout.astro";
 import GitHubIcon from "../assets/icons/GitHubIcon.astro";
 import LinkedInIcon from "../assets/icons/LinkedInIcon.astro";
 import WainroutesIcon from "../assets/icons/WainroutesIcon.astro";
+
+import AnimatedTypo from "../components/AnimatedTypo.astro";
 ---
 
 <Layout>
 
 <section class="page-section">
 	<div>
-		<h1 class="animated title">
-			Joe <span id="animated-text">Cupit</span>
+		<h1 class="title">
+			Joe <AnimatedTypo text="Cupit" typo="/kju-pɪt/" />
 		</h1>
 		<p>PhD Researcher & Web Developer</p>
 	</div>
@@ -24,78 +26,6 @@ import WainroutesIcon from "../assets/icons/WainroutesIcon.astro";
 		<LinkedInIcon />
 		<WainroutesIcon />
 	</div>
-
-	<script>
-		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		const animatedText = document.getElementById("animated-text");
-		let isAnimating = false
-
-		const textAnimation = (target: HTMLElement, normal: string, alternate: string) => {
-			if (!target) return;
-
-			let time = 0;
-			const step = (fn: CallableFunction, delay: number) => {
-				time += delay;
-				setTimeout(fn, time);
-			}
-
-			const jitter = (base: number, around: number = 10) => {
-				const offset = Math.floor(Math.random() * (around * 2 + 1)) - around;
-				return base + offset;
-			};
-
-			const typeText = (str: string, speed: number) => {
-				for (let i=1; i<= str.length; i++) {
-					step(() => target.innerText = str.slice(0, i), jitter(speed, 10));
-				}
-			}
-
-			const deleteText = (str: string, speed: number) => {
-				for (let i=str.length; i>=0; i--) {
-					step(() => target.innerText = str.slice(0, i), jitter(speed, 10));
-				}
-			}
-
-			// delete original
-			deleteText(normal, 120);
-			step(() => {}, 250);
-
-			// type new
-			typeText(alternate, 160);
-			step(() => target.classList.add("error"), -150);
-			
-			// pause
-			step(() => {}, 1500);
-
-			// delete new
-			deleteText(alternate, 130);
-			step(() => target.classList.remove("error"), 250);
-
-			// type original
-			typeText(normal, 120);
-
-			step(() => isAnimating = false, 500);
-		}
-
-		let animatingId: NodeJS.Timeout | null = null;
-		const doAnimation = () => {
-			if (!isAnimating && !prefersReducedMotion && animatedText) {
-				if (animatingId) {
-				clearTimeout(animatingId);
-				}
-
-				isAnimating = true;
-				textAnimation(animatedText, "Cupit", "/kju-pɪt/");  // /kju-pɪt/
-
-				animatingId = setTimeout(() => {
-				doAnimation();
-				}, 30000);
-			}
-		}
-
-		animatingId = setTimeout(doAnimation, 1000);
-		animatedText?.addEventListener("mouseover", doAnimation);
-	</script>
 </section>
 
 </Layout>
