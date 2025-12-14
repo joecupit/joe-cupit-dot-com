@@ -3,6 +3,5 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://joe-cupit.github.io",
-  base: "/joe-cupit-dot-com",
+  site: "https://joecupit.com",
 });

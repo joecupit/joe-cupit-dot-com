@@ -10,13 +10,12 @@
   padding-block: 2lh;
 }
 
-.index-header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
+.title {
+  font-size: var(--fs-title);
+  font-weight: 800;
 }
 
-.index-header-icons {
+.icon-group {
   display: flex;
   gap: 1.25ch;
   margin-block: 0.125lh;
@@ -38,39 +37,12 @@
     width: 100%;
     height: 100%;
   }
-}
-.icon-link:hover {
-  color: var(--_hover-colour);
-}
-
-.title {
-  font-size: var(--fs-title);
-  font-weight: 800;
-}
-.title span {
-  position: relative;
-  cursor: default;
-
-  &::after {
-    content: "";
-    width: 100%;
-    height: 0.25ch;
-    background-image: url("/zig.svg");
-    position: absolute;
-    top: calc(100% - 0.825rem);
-    left: 0;
-    z-index: -1;
-
-    opacity: 0;
-    transition: opacity 50ms;
-  }
-
-  &.error::after {
-    opacity: 1;
+  &:hover {
+    color: var(--_hover-colour);
   }
 }
 
-.normal-link {
+.underlined-link {
   --_t-duration: 150ms;
 
   position: relative;
@@ -103,5 +75,28 @@
       height: 100%;
       top: 0;
     }
+  }
+}
+
+.animated span {
+  position: relative;
+  cursor: default;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 0.25ch;
+    background-image: url("/assets/zig.svg");
+    position: absolute;
+    top: calc(100% - 0.825rem);
+    left: 0;
+    z-index: -1;
+
+    opacity: 0;
+    transition: opacity 50ms;
+  }
+
+  &.error::after {
+    opacity: 1;
   }
 }

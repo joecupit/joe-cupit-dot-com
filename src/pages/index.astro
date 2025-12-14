@@ -8,44 +8,26 @@ import WainroutesIcon from "../assets/icons/WainroutesIcon.astro";
 
 <Layout>
 
-<section class="page-section index-header" id="hero">
-	<div class="index-header-top">
-		<div>
-			<h1 class="title">
-				Joe <span id="test-text">Cupit</span>
-			</h1>
-			<p>PhD Researcher & Web Developer</p>
-		</div>
+<section class="page-section">
+	<div>
+		<h1 class="animated title">
+			Joe <span id="animated-text">Cupit</span>
+		</h1>
+		<p>PhD Researcher & Web Developer</p>
 	</div>
 
 	<p>I'm a PhD student at the University of Manchester applying machine learning to scheduling and OEE in the chemical and process industries.</p>
-	<p>My personal project is <a class="normal-link" href="https://wainroutes.co.uk/" target="_blank">Wainroutes</a>, where I share routes (& other useful info) for climbing the 214 Wainwrights in the Lake District.</p>
+	<p>My personal project is <a class="underlined-link" href="https://wainroutes.co.uk/" target="_blank">Wainroutes</a>, where I share routes (& other useful info) for climbing the 214 Wainwrights in the Lake District.</p>
 
-	<div class="index-header-icons">
+	<div class="icon-group">
 		<GitHubIcon />
 		<LinkedInIcon />
 		<WainroutesIcon />
 	</div>
 
 	<script>
-		const scrollButton = document.getElementById("read-more-button");
-
-		const checkScroll = () => {
-		if (window.scrollY > 100) {
-			scrollButton?.classList.add("hide");
-		}
-		else {
-			scrollButton?.classList.remove("hide");
-		}
-		}
-
-		window.addEventListener("scroll", checkScroll);
-		checkScroll()
-	</script>
-
-	<script>
 		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-		const text = document.getElementById("test-text");
+		const animatedText = document.getElementById("animated-text");
 		let isAnimating = false
 
 		const textAnimation = (target: HTMLElement, normal: string, alternate: string) => {
@@ -97,13 +79,13 @@ import WainroutesIcon from "../assets/icons/WainroutesIcon.astro";
 
 		let animatingId: NodeJS.Timeout | null = null;
 		const doAnimation = () => {
-			if (!isAnimating && !prefersReducedMotion && text) {
+			if (!isAnimating && !prefersReducedMotion && animatedText) {
 				if (animatingId) {
 				clearTimeout(animatingId);
 				}
 
 				isAnimating = true;
-				textAnimation(text, "Cupit", "/kju-pɪt/")  // /kju-pɪt/
+				textAnimation(animatedText, "Cupit", "/kju-pɪt/");  // /kju-pɪt/
 
 				animatingId = setTimeout(() => {
 				doAnimation();
@@ -112,7 +94,7 @@ import WainroutesIcon from "../assets/icons/WainroutesIcon.astro";
 		}
 
 		animatingId = setTimeout(doAnimation, 1000);
-		document.getElementById("test-text")?.addEventListener("mouseover", doAnimation)
+		animatedText?.addEventListener("mouseover", doAnimation);
 	</script>
 </section>
 
