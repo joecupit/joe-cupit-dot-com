@@ -98,10 +98,10 @@
   }
   &:hover {
     color: var(--clr-white);
-  
+
     &::after {
-      height: calc(100% + 1px);
-      top: -1px;
+      height: 100%;
+      top: 0;
     }
   }
 }
