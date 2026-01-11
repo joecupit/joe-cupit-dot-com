@@ -81,3 +81,20 @@
     }
   }
 }
+
+.button-link {
+  font-weight: 800;
+
+  border: 4px solid var(--clr-text);
+
+  padding-block: 0.25lh;
+  padding-inline: 1.5ch;
+
+  transition-property: color background-color;
+  transition-duration: 200ms;
+
+  &:hover {
+    color: var(--clr-bg);
+    background: var(--clr-text);
+  }
+}

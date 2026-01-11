@@ -1,0 +1,233 @@
+---
+import Layout from "./Layout.astro";
+
+import ArrowIcon from "../assets/icons/ArrowIcon.astro";
+
+const { title, subtitle, url } = Astro.props;
+---
+
+<Layout
+  title={`${title}: a web project`}
+  maxWidth="74ch"
+>
+  <section class="page-section project">
+    <div id="project-header" class="project-header">
+      <div>
+        <span>{(subtitle ?? "Project") + ":"}</span>
+        <h1>{title}</h1>
+      </div>
+      <a class="project-button" href={url} target="_blank">
+        Visit site
+        <ArrowIcon />
+      </a>
+    </div>
+
+    <div class="project-md">
+      <slot />
+    </div>
+
+    <div class="project-footer">
+      <a class="button-link" href="/projects">back to projects</a>
+    </div>
+  </section>
+
+  <style is:global>
+    .project {
+      display: grid;
+      gap: 1.75lh;
+
+      margin-block: 5rem;
+      padding-block: 0;
+    }
+
+    .project-md {
+
+      & h2 {
+        font-size: var(--fs-medium);
+        font-weight: 800;
+
+        margin-block-start: 1.5lh;
+        margin-block-end: 0.5lh;
+
+        &::after {
+          content: "";
+          display: block;
+          height: 3px;
+          background: currentColor;
+          margin-block-start: 0.125lh;
+        }
+      }
+
+      & p:has(+ p),
+      & p:has(+ ul),
+      & ul:has(+ p),
+      & ul:has(+ ul) {
+        margin-block-end: 0.375lh;
+      }
+
+      & p:has(img) {
+        margin-block: 1lh;
+      }
+      & img {
+        border: 3px solid var(--clr-text);
+
+        width: 100%;
+        height: fit-content;
+      }
+
+      & ul {
+        list-style: inside square;
+        margin-inline-start: 0.5ch;
+      }
+
+      & > :first-child {
+        margin-block-start: 0;
+      }
+      & > :last-child {
+        margin-block-end: 0;
+      }
+    }
+
+    .project-header {
+      display: flex;
+      column-gap: 2ch;
+      row-gap: 0.5lh;
+      justify-content: space-between;
+      align-items: end;
+
+      height: 2.375lh;
+
+      position: sticky;
+      top: 0;
+      padding-block-start: 0.5rem;
+      margin-block-start: -0.5rem;
+      z-index: 9999;
+
+      background: var(--clr-bg);
+      border-bottom: 5px solid transparent;
+
+      transition: border-color 200ms;
+
+      & span {
+        text-transform: lowercase;
+        display: block;
+        transition-behavior: allow-discrete;
+        transition-property: display;
+        /* transition-delay: 200ms; */
+      }
+      & h1 {
+        font-size: var(--fs-big);
+        font-weight: 800;
+
+        transition: all 200ms;
+      }
+    }
+    .project-header.shrink {
+      align-items: center;
+      border-color: currentColor;
+
+      & span {
+        display: none;
+        transition-delay: 0ms;
+      }
+      & h1 {
+        font-size: calc(var(--fs-medium) * 1.1);
+      }
+      & .project-button {
+        font-size: calc(var(--fs-body));
+        padding-inline: 1.25ch;
+        padding-block: 0.075lh;
+        gap: 0.75ch;
+        border-width: 3px;
+
+        & svg {
+          width: 2ch;
+          height: 2ch;
+        }
+      }
+    }
+
+    .project-footer {
+      display: grid;
+    }
+
+    .project-button {
+      display: flex;
+      gap: 1ch;
+      align-items: center;
+
+      color: var(--clr-bg);
+      background: var(--clr-text);
+      text-transform: lowercase;
+      text-wrap: nowrap;
+
+      border: 4px solid var(--clr-text);
+      width: fit-content;
+      font-weight: 600;
+
+      padding-inline: 1.5ch;
+      padding-block: 0.125lh;
+
+      transition: all 200ms;
+
+      & svg {
+        width: 2.125ch;
+        height: 2.125ch;
+        transition: rotate 200ms;
+      }
+
+      &:hover {
+        color: var(--clr-text);
+        background: none;
+        text-decoration: underline;
+
+        & svg {
+          rotate: -45deg;
+        }
+      }
+    }
+
+    @media (max-width: 27.5rem) {
+      .project {
+        display: grid;
+        gap: 1.75lh;
+
+        margin-block: 3.5rem;
+      }
+
+      .project-button {
+        padding-inline: 1ch;
+        gap: 0.625ch;
+
+        & svg {
+          width: 2ch;
+          height: 2ch;
+        }
+      }
+      .project-header.shrink .project-button {
+        padding-inline: 0.725ch;
+        padding-block: 0.075ch;
+      }
+    }
+
+  </style>
+
+  <script>
+    const projectHeader = document.getElementById("project-header");
+
+    const checkScroll = () => {
+      console.log(window.scrollY);
+
+      if (window.innerWidth <= 440 && window.scrollY > 60 || window.scrollY > 85) {
+        projectHeader?.classList.add("shrink");
+      }
+      else {
+        projectHeader?.classList.remove("shrink");
+      }
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    checkScroll();
+  </script>
+
+</Layout>

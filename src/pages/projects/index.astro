@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const projects = await getCollection("projects");
+---
+
+<Layout title="Projects">
+
+<section class="page-section">
+	<h1>Projects</h1>
+    <ul>
+        {projects.map((project) => 
+            <li>
+                <a href={`/projects/${project.id}`} class="image">{project.data.title}</a>
+            </li>
+        )}
+    </ul>
+</section>
+
+</Layout>
+
+<style>
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+    }
+
+    ul {
+        list-style: none;
+        text-align: center;
+    }
+    li {
+        width: fit-content;
+        height: fit-content;
+        transform: translateX(0);
+    }
+    li:hover {
+        transform: translateX(0.5ch);
+    }
+</style>
